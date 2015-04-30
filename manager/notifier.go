@@ -307,7 +307,9 @@ func (n *notifier) sendEmailNotification(to string, op notificationOp, a *Alert)
 	defer c.Quit()
 
 	// Authenticate if we and the server are both configured for it.
-	auth, tlsConfig, err := getSMTPAuth(c.Extension("AUTH"))
+	//auth, tlsConfig, err := getSMTPAuth(c.Extension("AUTH"))
+	// set this for gmail
+	auth, tlsConfig, err := getSMTPAuth(true, "PLAIN")
 	if err != nil {
 		return err
 	}
